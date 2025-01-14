@@ -32,13 +32,13 @@ User Stories help a team to do BDD: User stories were created to be "placeholder
 Three Amigos: to ensure that the team fully understand the scope of the story being discussed, e.g. Product Owner (for representing the customer/business perspective), Developer (for representing development perspective), and Tester (for representing test perspective).  
 
 ## Gherkin keywords
-Scenario == the example
-Given == the context: a specific state ready for the scenario to unfold
-When == the action: done to the system that causes the system produces an outcome
-Then == the outcome: the system's expected behaviour responding to the action happens in the context.
+Scenario == the example  
+Given == the context: a specific state ready for the scenario to unfold  
+When == the action: done to the system that causes the system produces an outcome  
+Then == the outcome: the system's expected behaviour responding to the action happens in the context.  
 
 ## Best way to get started with Cucumber
-Use a template proejct from [Github here](https://github.com/cucumber/cucumber-java-skeleton/tags). Download the zipped tag release and unzip it. Sample v5.6.0 is available in this folder.
+Use a template proejct from [Github here](https://github.com/cucumber/cucumber-java-skeleton/tags). Download the zipped tag release and unzip it. Sample v5.6.0 is available in this folder.  
 
 See sample project 'shouty'.
 
