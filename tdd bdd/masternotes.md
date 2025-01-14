@@ -40,6 +40,10 @@ Then == the outcome: the system's expected behaviour responding to the action ha
 ## Best way to get started with Cucumber
 Use a template proejct from [Github here](https://github.com/cucumber/cucumber-java-skeleton/tags). Download the zipped tag release and unzip it. Sample v5.6.0 is available in this folder.  
 
+When the project is opened in IntelliJ, IntelliJ will normally suggest the Cucumber and Gherkin plugins to be installed and configured as shown below:
+![image](https://github.com/user-attachments/assets/f989f2ed-d4f0-4825-b5b1-30c1325db30f)
+
+
 See sample project 'shouty'.
 
 
