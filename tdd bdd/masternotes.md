@@ -8,9 +8,7 @@ Summary of the course is shown below.
 Legacy code can mean old codes without unit tests.
 
 4 steps to Refactoring Legacy Code:
-1) Approval testing: get the reference result with good code coverage to make sure all scenarios are covered  
-Start refactoring by: 
-2) Remove clutters: use Version Control to commit each of these actions in small incremental steps: removing dead code, renaming for better clarity, etc. Rerun approval test for no-behavioural change introduced.  
-3a) Reduce cyclomatic complexity   
-3b) Compose methods by method extraction. Cyclomatic complexity: different path the code can go through (by ifs-else, etc). Rerun approval test to make sure no behavioural changes is introduced. Also, possibly create interface to put a level of abstraction in the code so SOLID principle is respected.  
-4) Create more tests to cover all scenarios, copy the result as reference result.
+1. Approval testing: get the reference result with good code coverage to make sure all scenarios are covered
+2. Start refactoring by removing clutters: use Version Control to commit each of these actions in small incremental steps: removing dead code, renaming for better clarity, etc. Rerun approval test for no-behavioural change introduced.
+3. Reduce cyclomatic complexity and compose methods by method extraction. Cyclomatic complexity: different path the code can go through (by ifs-else, etc). Rerun approval test to make sure no behavioural changes is introduced. Also, possibly create interface to put a level of abstraction in the code so SOLID principle is respected.
+4. Create more tests to cover all scenarios, copy the result as reference result.
