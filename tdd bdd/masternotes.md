@@ -1,5 +1,6 @@
 # Approval/Characterisation Testing
 Good introduction on approval/characterisation testing [here](https://www.youtube.com/watch?v=jAMVtMesHqk) and [here](https://www.youtube.com/watch?v=5H2s1knHUlA).
+Living documentation using Approvals framework (definitely worth looking at!) is shown [here](https://www.youtube.com/watch?v=QEdpE0chA-s)
 
 # Refactoring Legacy Code
 Good course on this [here](https://courses.cd.training/courses/take/refactoring-tutorial/texts/22765099-about-this-course).
@@ -37,14 +38,60 @@ Given == the context: a specific state ready for the scenario to unfold
 When == the action: done to the system that causes the system produces an outcome  
 Then == the outcome: the system's expected behaviour responding to the action happens in the context.  
 
+Each line in a Scenario that begins with Given/When/Then is called a ***step***. We have to tell Cucumber what to do with these steps by providing ***step definitions*** as Java code with annotations @Given, @When, and @Then respectively.
+
 ## Best way to get started with Cucumber
 Use a template proejct from [Github here](https://github.com/cucumber/cucumber-java-skeleton/tags). Download the zipped tag release and unzip it. Sample v5.6.0 is available in this folder.  
 
-When the project is opened in IntelliJ, IntelliJ will normally suggest the Cucumber and Gherkin plugins to be installed and configured as shown below:
-![image](https://github.com/user-attachments/assets/f989f2ed-d4f0-4825-b5b1-30c1325db30f)
+When the project is opened in IntelliJ, IntelliJ will normally suggest the Cucumber and Gherkin plugins to be installed and configured as shown below:  
+![image](https://github.com/user-attachments/assets/f989f2ed-d4f0-4825-b5b1-30c1325db30f)  
 
+### Sample project 'shouty'
+See sample project 'shouty'.  
 
-See sample project 'shouty'.
+Create your Feature files (*.feature) as below:  
+![image](https://github.com/user-attachments/assets/c91e81d3-17d1-4449-8be0-f679154215c9)  
+NOTE: best to keep the name of the feature file same as the feature.
+
+hear_shout.feature:  
+```
+Feature: Hear shout
+  Scenario: Listener is within range
+    Given Lucy is located 15 metres from Sean
+    When Sean shouts "free bagels at Sean's"
+    Then Lucy hears Sean's message
+```
+
+Run the project: `$ mvn clean test`  
+![image](https://github.com/user-attachments/assets/90d7ee3a-5acb-4b78-87eb-e3f0f7213c47)  
+
+You will find some 'undefines' (red) and the provided definitions (yellow) :  
+![image](https://github.com/user-attachments/assets/30dab0e2-4621-4299-8442-045b56c82211)  
+
+### Cucumber Expression
+It's a simplified version of Regex used in G/W/T annotations. Regex can still be used. It is Java String.
+
+Simple example of Cucex is the string element inside @Given: `@Given("Lucy is located 15 metres from Sean")`  
+
+Capturing parameters: {int}, {float}, {word}, {String}. E.g.:  `@Given("Lucy is located {int} metres from Sean")`
+
+Flexibility: you can add (s) in metre to include 1 metre or x metres. Also you can use / as alternative.E.g.: `@Given("Lucy is located/standing {int} metre(s) from Sean")`. In this case located or standing any distance away will be a match.  
+
+To create your own parameter type, use Cucumber's annotation `@ParameterType("<text to match in Gherkin step>")` with the method name = the parameter name. E.g.:  
+```
+public class StepDefinitions {
+  @Given("{person} is located {int} metres from Sean")    
+  public void lucy_is_located_metres_from_Sean(Person person, Integer distance) { ... }
+  ...
+}
+```
+```
+public class ParameterTypes {
+  @ParameterType("Lucy|Sean")
+  public Person person(String name) { return new Person(name); }
+  ...
+}
+```
 
 
 
