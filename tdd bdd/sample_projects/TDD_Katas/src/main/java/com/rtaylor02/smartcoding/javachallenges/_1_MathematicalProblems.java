@@ -1,21 +1,33 @@
 package com.rtaylor02.smartcoding.javachallenges;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class _1_MathematicalProblems {
     public static void main(String... args) {
 
     }
 
-    private static class ShortIntroductionToDivisionAndModulo {
-        private static void main(String... args) {
+    static class ShortIntroductionToDivisionAndModulo {
+        public static void main(String... args) {
 
         }
 
-        private static void extractDigits(int number) {
+        List<Integer> extractDigits(final int number) {
+            List<Integer> numbers = new ArrayList<>();
 
+            int remainingValue = number;
+            while (remainingValue > 0) {
+                final int digit = remainingValue % 10;
+                numbers.add(digit);
+                remainingValue = remainingValue / 10;
+            }
+
+            return numbers.reversed();
         }
 
-        private static void countDigits(int number) {
-
+        int countDigits(int number) {
+            return number;
         }
     }
 }
