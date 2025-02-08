@@ -31,6 +31,24 @@ class _1_MathematicalProblemsTest {
         @Test
         @DisplayName("Counting digits of 123")
         void testCountDigits() {
+            // ARRANGE - ACT
+            int digits = sut.countDigits(123456);
+
+            // ASSERT
+            assertEquals(6, digits);
+        }
+
+        @Test
+        @DisplayName("Finding proper divisors of 10")
+        void testFindProperDivisors() {
+            // ARRANGE
+            List<Integer> expected = List.of(1, 2, 5);
+
+            // ACT
+            List<Integer> result = sut.findProperDivisors(10);
+
+            // ASSERT
+            assertEquals(expected, result);
         }
     }
 }

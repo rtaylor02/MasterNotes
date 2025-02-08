@@ -16,7 +16,7 @@ public class _1_MathematicalProblems {
         List<Integer> extractDigits(final int number) {
             List<Integer> numbers = new ArrayList<>();
 
-            int remainingValue = number;
+            int remainingValue = Math.abs(number);
             while (remainingValue > 0) {
                 final int digit = remainingValue % 10;
                 numbers.add(digit);
@@ -27,7 +27,18 @@ public class _1_MathematicalProblems {
         }
 
         int countDigits(int number) {
-            return number;
+            int counter = 0;
+            int remainingValue = number;
+            while (remainingValue > 0) {
+                remainingValue = remainingValue / 10;
+                counter = counter + 1;
+            }
+
+            return counter;
+        }
+
+        List<Integer> findProperDivisors(int i) {
+            return null;
         }
     }
 }
