@@ -37,8 +37,17 @@ public class _1_MathematicalProblems {
             return counter;
         }
 
-        List<Integer> findProperDivisors(int i) {
-            return null;
+        List<Integer> findProperDivisors(int number) {
+            final List<Integer> divisors = new ArrayList<>();
+            divisors.add(1); // All numbers have 1 as a real divisor
+
+            for (int divisor = 2; divisor <= number / 2; divisor++) {
+                if (number % divisor == 0) {
+                    divisors.add(divisor);
+                }
+            }
+
+            return divisors;
         }
     }
 }
