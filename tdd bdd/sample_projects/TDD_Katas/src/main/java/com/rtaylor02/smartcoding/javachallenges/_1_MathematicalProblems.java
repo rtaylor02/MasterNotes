@@ -67,11 +67,10 @@ public class _1_MathematicalProblems {
                 primeNumbers.add(i);
             }
 
-            int size = primeNumbers.size();
-            for (int i = 0; i < size / 2; i++) {
+            int sqrt = (int) Math.sqrt(maxNumber); // All divisors  of maxNumber will ALWAYS be < sqrt(n). E.g. 150 ==> 1, 2, 3, 5, 6, 10, 15, 25, 30, 50, 75. sqrt(150) = 12. Any numbers > 12 are multiples of 1, 2, 3, 5, 6, or 10.
+            for (int i = 0; i < sqrt; i++) {
                 int divisor = primeNumbers.get(i);
                 primeNumbers.removeIf(x -> (x != divisor) && (x % divisor == 0));
-                size = primeNumbers.size();
             }
 
             return primeNumbers;
