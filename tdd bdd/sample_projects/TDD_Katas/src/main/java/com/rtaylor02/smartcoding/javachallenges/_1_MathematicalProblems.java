@@ -9,10 +9,6 @@ public class _1_MathematicalProblems {
     }
 
     static class ShortIntroductionToDivisionAndModulo {
-        public static void main(String... args) {
-
-        }
-
         List<Integer> extractDigits(final int number) {
             List<Integer> numbers = new ArrayList<>();
 
@@ -36,7 +32,9 @@ public class _1_MathematicalProblems {
 
             return counter;
         }
+    }
 
+    static class ShortIntroductionToDivider {
         List<Integer> findProperDivisors(int number) {
             final List<Integer> divisors = new ArrayList<>();
             divisors.add(1); // All numbers have 1 as a real divisor
@@ -50,15 +48,34 @@ public class _1_MathematicalProblems {
             return divisors;
         }
     }
+
+    static class ShortIntroductionToPrimeNumbers {
+        boolean isPrimeNumber(int numberToCheck) {
+            for (int i = 2; i <= numberToCheck / 2; i++) {
+                if (numberToCheck % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // Algorithm: Sieve of Eratosthenes - removal of number multiplications
+        List<Integer> findAllPrimeNumbers(int maxNumber) {
+            // Initialise the list first
+            List<Integer> primeNumbers = new ArrayList<>();
+            for (int i = 2; i <= maxNumber; i++) {
+                primeNumbers.add(i);
+            }
+
+            int size = primeNumbers.size();
+            for (int i = 0; i < size / 2; i++) {
+                int divisor = primeNumbers.get(i);
+                primeNumbers.removeIf(x -> (x != divisor) && (x % divisor == 0));
+                size = primeNumbers.size();
+            }
+
+            return primeNumbers;
+        }
+    }
 }
 
-/*
-====================== Test ==========================
-extractDigits:
-123 ==> 3 2 1
-3456 ==> 6 5 4 3
-----------------
-countDigits:
-123 ==> 3
-3456 ==> 4
- */

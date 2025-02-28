@@ -7,11 +7,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class _1_MathematicalProblemsTest {
@@ -62,6 +63,12 @@ class _1_MathematicalProblemsTest {
             // ASSERT
             assertEquals(expected, digits);
         }
+    }
+
+    @Nested
+    @DisplayName("Short Introduction to Divider")
+    class ShortIntroductionToDividerTest {
+        private _1_MathematicalProblems.ShortIntroductionToDivider sut = new _1_MathematicalProblems.ShortIntroductionToDivider();
 
         @DisplayName("Finding real divisors")
         @ParameterizedTest(name = "Real divisors of {0}: {1}")
@@ -76,11 +83,61 @@ class _1_MathematicalProblemsTest {
 
         static Stream<Arguments> argsSource_findProperDivisors() {
             return Stream.of(Arguments.of(10, List.of(1, 2, 5)),
-                            Arguments.of(7, List.of(1)),
-                            Arguments.of(18, List.of(1, 2, 3, 6, 9)),
-                            Arguments.of(24, List.of(1, 2, 3, 4, 6, 8, 12)),
-                            Arguments.of(150, List.of(1, 2, 3, 5, 6, 10, 15, 25, 30, 50, 75)),
-                            Arguments.of(0, List.of(1)));
+                    Arguments.of(7, List.of(1)),
+                    Arguments.of(18, List.of(1, 2, 3, 6, 9)),
+                    Arguments.of(24, List.of(1, 2, 3, 4, 6, 8, 12)),
+                    Arguments.of(150, List.of(1, 2, 3, 5, 6, 10, 15, 25, 30, 50, 75)),
+                    Arguments.of(159, List.of(1, 3, 53)),
+                    Arguments.of(0, List.of(1)));
+        }
+    }
+
+    @Nested
+    @DisplayName("Short Introduction to Prime Numbers")
+    class ShortIntroductionToPrimeNumbersTest {
+        private _1_MathematicalProblems.ShortIntroductionToPrimeNumbers sut = new _1_MathematicalProblems.ShortIntroductionToPrimeNumbers();
+
+        @DisplayName("Checking if a number is a prime number")
+        @ParameterizedTest(name = "{0} is a prime number")
+        @ValueSource(ints = {1, 2, 3, 5, 7, 11})
+        void shouldReturnTrue_whenGivenPrimeNumbers(int numberToCheck) {
+            // ARRANGE - ACT
+            boolean result = sut.isPrimeNumber(numberToCheck);
+
+            // ASSERT
+            assertTrue(result);
+        }
+
+        @DisplayName("Checking if a number is NOT a prime number")
+        @ParameterizedTest(name = "{0} is NOT a prime number")
+        @ValueSource(ints = {4, 6, 8, 9, 12, 14})
+        void shouldReturnFalse_whenGivenNonPrimeNumbers(int numberToCheck) {
+            // ARRANGE - ACT
+            boolean result = sut.isPrimeNumber(numberToCheck);
+
+            // ASSERT
+            assertFalse(result);
+        }
+
+        @DisplayName("Finding all prime numbers")
+        @ParameterizedTest(name = "Prime numbers up to {0}: {1}")
+        @MethodSource("argsSource_findAllPrimeNumbers")
+        void testFindAllPrimeNumbers(int maxNumber, List<Integer> expected) {
+            // ARRANGE - ACT
+            List<Integer> result = sut.findAllPrimeNumbers(maxNumber);
+
+            // ASSERT
+            assertEquals(expected, result);
+        }
+
+        static Stream<Arguments> argsSource_findAllPrimeNumbers() {
+            return Stream.of(
+                    Arguments.of(8, List.of(2, 3, 5, 7)),
+                    Arguments.of(25, List.of(2, 3, 5, 7, 11, 13, 17, 19, 23)),
+                    Arguments.of(100, List.of(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97)),
+                    Arguments.of(160, List.of(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157)),
+                    Arguments.of(500, List.of(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499)),
+                    Arguments.of(15, List.of(2, 3, 5, 7, 11, 13)));
         }
     }
 }
