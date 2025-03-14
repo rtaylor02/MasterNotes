@@ -1,5 +1,7 @@
 package com.rtaylor02.smartcoding.javachallenges;
 
+import jdk.dynalink.beans.StaticClass;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,6 +76,16 @@ public class _1_MathematicalProblems {
             }
 
             return primeNumbers;
+        }
+    }
+
+    static class Solutions {
+
+
+        static class _1a_BasicArithmeticOperations {
+            public int calc(int n, int m) {
+                return (n * m / 2) % 7;
+            }
         }
     }
 }

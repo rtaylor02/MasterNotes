@@ -140,4 +140,24 @@ class _1_MathematicalProblemsTest {
                     Arguments.of(15, List.of(2, 3, 5, 7, 11, 13)));
         }
     }
+
+    @Nested
+    @DisplayName("Solutions")
+    class SolutionsTest {
+        @DisplayName("Solution 1a: Basic Arithmetic Operations")
+        @ParameterizedTest(name = "({0} * {1} / 2) % 7 = {2}")
+        @CsvSource({"6, 7, 0", "3, 4, 6", "5, 5, 5"})
+        void testCalc(int n, int m, int expected) {
+            // ARRANGE
+            _1_MathematicalProblems.Solutions._1a_BasicArithmeticOperations sut = new _1_MathematicalProblems.Solutions._1a_BasicArithmeticOperations();
+
+            // ACT
+            int result = sut.calc(n, m);
+
+            // ASSERT
+            assertEquals(expected, result);
+        }
+
+        
+    }
 }
