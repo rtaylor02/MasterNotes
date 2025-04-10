@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -158,6 +159,34 @@ class _1_MathematicalProblemsTest {
             assertEquals(expected, result);
         }
 
-        
+        @DisplayName("Solution 1b: Statistics. Problem: Find the number as well as the sum of natural numbers, which are divisible by 2 or 7 up to a given maximum value (exclusive) and output it to the console. Write method void calcSumAndCountAllNumbersDivBy_2_Or_7(int). Extend it so that it returns the two values instead of performing the console output.")
+        @ParameterizedTest(name = "Numbers divisible by 2 or 7 up to {0} ==> count={1}, sum={2}")
+        @CsvSource({"3, 1, 2", "8, 4, 19", "15, 8, 63"})
+        void testCalcSumAndCountAllNumbersDivBy_2_Or_7(int n, int expectedCount, int expectedSum) {
+            // ARRANGE
+            _1_MathematicalProblems.Solutions._1b_Statistics sut = new _1_MathematicalProblems.Solutions._1b_Statistics();
+
+            // ACT
+            Map<_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode, Integer> result = sut.calcSumAndCountAllNumbersDivBy_2_Or_7(n);
+
+            // ASSERT
+            assertEquals(expectedCount, result.get(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.COUNT));
+            assertEquals(expectedSum, result.get(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.SUM));
+        }
+
+        @DisplayName("Solution 1b: Statistics. Problem: Find the number as well as the sum of natural numbers, which are divisible by 2 or 7 up to a given maximum value (exclusive) and output it to the console. Write method void calcSumAndCountAllNumbersDivBy_2_Or_7(int). Extend it so that it returns the two values instead of performing the console output.")
+        @ParameterizedTest(name = "Using record, Numbers divisible by 2 or 7 up to {0} ==> count={1}, sum={2}")
+        @CsvSource({"3, 1, 2", "8, 4, 19", "15, 8, 63"})
+        void testCalcSumAndCountAllNumbersDivBy_2_Or_7_withRecord(int n, int expectedCount, int expectedSum) {
+            // ARRANGE
+            _1_MathematicalProblems.Solutions._1b_Statistics sut = new _1_MathematicalProblems.Solutions._1b_Statistics();
+
+            // ACT
+            _1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode_record result = sut.calcSumAndCountAllNumbersDivBy_2_Or_7_withRecord(n);
+
+            // ASSERT
+            assertEquals(expectedCount, result.count());
+            assertEquals(expectedSum, result.sum());
+        }
     }
 }

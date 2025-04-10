@@ -3,7 +3,9 @@ package com.rtaylor02.smartcoding.javachallenges;
 import jdk.dynalink.beans.StaticClass;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class _1_MathematicalProblems {
     public static void main(String... args) {
@@ -80,11 +82,49 @@ public class _1_MathematicalProblems {
     }
 
     static class Solutions {
-
-
+        // Problem: Write method int calc(int, int) that multiplies two variables, m and n of type int, then divides the product by two, and outputs the remainder with respect to division by 7.
         static class _1a_BasicArithmeticOperations {
             public int calc(int n, int m) {
                 return (n * m / 2) % 7;
+            }
+        }
+
+        // Problem: Find the number as well as the sum of natural numbers, which are divisible by 2 or 7 up to a given maximum value (exclusive) and output it to the console. Write method void calcSumAndCountAllNumbersDivBy_2_Or_7(int). Extend it so that it returns the two values instead of performing the console output.
+        static class _1b_Statistics {
+            enum ReturnCode {
+                COUNT, SUM;
+            }
+
+            record ReturnCode_record(int count, int sum) {}
+
+            private boolean divisibleBy2Or7(int i) {
+                return i % 2 == 0 || i % 7 == 0;
+            }
+
+            public Map<ReturnCode, Integer> calcSumAndCountAllNumbersDivBy_2_Or_7(final int max) {
+                int count = 0;
+                int sum = 0;
+
+                for (int i = 1; i < max; i++) {
+                    if (divisibleBy2Or7(i)) {
+                        count++;
+                        sum = sum + i;
+                    }
+                }
+                return Map.of(ReturnCode.COUNT, count, ReturnCode.SUM, sum);
+            }
+
+            public ReturnCode_record calcSumAndCountAllNumbersDivBy_2_Or_7_withRecord(final int max) {
+                int count = 0;
+                int sum = 0;
+
+                for (int i = 1; i < max; i++) {
+                    if (divisibleBy2Or7(i)) {
+                        count++;
+                        sum = sum + i;
+                    }
+                }
+                return new ReturnCode_record(count, sum);
             }
         }
     }
