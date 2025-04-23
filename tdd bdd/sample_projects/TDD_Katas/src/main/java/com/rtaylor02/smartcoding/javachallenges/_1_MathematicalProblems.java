@@ -127,6 +127,18 @@ public class _1_MathematicalProblems {
                 return new ReturnCode_record(count, sum);
             }
         }
+
+        static class _1c_EvenOrOddNumber {
+
+            public int isEven(int number) {
+                return number % 2 == 0 ? 1 : 0;
+            }
+
+            // REMINDER: modulo operator in Java is reduction towards 0.
+            public int isOdd(int number) {
+                return number % 2 != 0 ? 1 : 0;
+            }
+        }
     }
 }
 

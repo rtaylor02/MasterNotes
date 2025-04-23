@@ -188,5 +188,34 @@ class _1_MathematicalProblemsTest {
             assertEquals(expectedCount, result.count());
             assertEquals(expectedSum, result.sum());
         }
+
+        @DisplayName("Solution 1c: Even or Odd Number. Problem: Create the methods boolean isEven(n) and boolean isOdd(n) that will check if the passed integer is even or odd, respectively.")
+        @ParameterizedTest(name = "{0}: {1} (0 = even; 1 = odd)")
+        @CsvSource({"0, 1", "1, 0", "-1, 0", "-100, 1", "120, 1"})
+        void testIsEven(int n, int expected) {
+            // ARRANGE
+            _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber sut = new _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber();
+
+            // ACT
+            int result = sut.isEven(n);
+
+            // ASSERT
+            assertEquals(result, expected);
+        }
+
+        @DisplayName("Solution 1c: Even or Odd Number. Problem: Create the methods boolean isEven(n) and boolean isOdd(n) that will check if the passed integer is even or odd, respectively.")
+        @ParameterizedTest(name = "{0}: {1} (0 = even; 1 = odd)")
+        @CsvSource({"0, 0", "1, 1", "-1, 1", "-100, 0", "120, 0"})
+        void testIsOdd(int n, int expected) {
+            // ARRANGE
+            _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber sut = new _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber();
+
+            // ACT
+            int result = sut.isOdd(n);
+
+            // ASSERT
+            assertEquals(result, expected);
+        }
+
     }
 }
