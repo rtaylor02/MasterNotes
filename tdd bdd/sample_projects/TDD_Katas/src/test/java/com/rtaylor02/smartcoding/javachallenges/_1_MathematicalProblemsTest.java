@@ -175,6 +175,27 @@ class _1_MathematicalProblemsTest {
         }
 
         @DisplayName("Solution 1b: Statistics. Problem: Find the number as well as the sum of natural numbers, which are divisible by 2 or 7 up to a given maximum value (exclusive) and output it to the console. Write method void calcSumAndCountAllNumbersDivBy_2_Or_7(int). Extend it so that it returns the two values instead of performing the console output.")
+        @ParameterizedTest(name = "Count and sum of numbers divisible by 2 or 7 up to {0}: {1}")
+        @MethodSource("argProvider")
+        void testCalcSumAndCountAllNumbersDivBy_2_Or_7(int n, Map<_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode, Integer> expected) {
+            // ARRANGE
+            _1_MathematicalProblems.Solutions._1b_Statistics sut = new _1_MathematicalProblems.Solutions._1b_Statistics();
+
+            // ACT
+            Map<_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode, Integer> result = sut.calcSumAndCountAllNumbersDivBy_2_Or_7(n);
+
+            // ASSERT
+            assertEquals(expected, result);
+        }
+
+        private static Stream<Arguments> argProvider() {
+            return Stream.of(
+                    Arguments.of(3, Map.of(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.COUNT, 1, _1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.SUM, 2)),
+                    Arguments.of(8, Map.of(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.COUNT, 4, _1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.SUM, 19)),
+                    Arguments.of(15, Map.of(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.COUNT, 8, _1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.SUM, 63)));
+        }
+
+        @DisplayName("Solution 1b: Statistics. Problem: Find the number as well as the sum of natural numbers, which are divisible by 2 or 7 up to a given maximum value (exclusive) and output it to the console. Write method void calcSumAndCountAllNumbersDivBy_2_Or_7(int). Extend it so that it returns the two values instead of performing the console output.")
         @ParameterizedTest(name = "Using record, Numbers divisible by 2 or 7 up to {0} ==> count={1}, sum={2}")
         @CsvSource({"3, 1, 2", "8, 4, 19", "15, 8, 63"})
         void testCalcSumAndCountAllNumbersDivBy_2_Or_7_withRecord(int n, int expectedCount, int expectedSum) {
