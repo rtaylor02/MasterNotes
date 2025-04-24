@@ -20,7 +20,7 @@ class _1_MathematicalProblemsTest {
     @Nested
     @DisplayName("Short Introduction to Division and Modulo")
     class ShortIntroductionToDivisionAndModuloTest {
-        private _1_MathematicalProblems.ShortIntroductionToDivisionAndModulo sut = new _1_MathematicalProblems.ShortIntroductionToDivisionAndModulo();
+        private final _1_MathematicalProblems.ShortIntroductionToDivisionAndModulo sut = new _1_MathematicalProblems.ShortIntroductionToDivisionAndModulo();
 
         @Test
         @DisplayName("Extracting digits of 123")
@@ -69,7 +69,7 @@ class _1_MathematicalProblemsTest {
     @Nested
     @DisplayName("Short Introduction to Divider")
     class ShortIntroductionToDividerTest {
-        private _1_MathematicalProblems.ShortIntroductionToDivider sut = new _1_MathematicalProblems.ShortIntroductionToDivider();
+        private final _1_MathematicalProblems.ShortIntroductionToDivider sut = new _1_MathematicalProblems.ShortIntroductionToDivider();
 
         @DisplayName("Finding real divisors")
         @ParameterizedTest(name = "Real divisors of {0}: {1}")
@@ -96,7 +96,7 @@ class _1_MathematicalProblemsTest {
     @Nested
     @DisplayName("Short Introduction to Prime Numbers")
     class ShortIntroductionToPrimeNumbersTest {
-        private _1_MathematicalProblems.ShortIntroductionToPrimeNumbers sut = new _1_MathematicalProblems.ShortIntroductionToPrimeNumbers();
+        private final _1_MathematicalProblems.ShortIntroductionToPrimeNumbers sut = new _1_MathematicalProblems.ShortIntroductionToPrimeNumbers();
 
         @DisplayName("Checking if a number is a prime number")
         @ParameterizedTest(name = "{0} is a prime number")
@@ -224,21 +224,21 @@ class _1_MathematicalProblemsTest {
                 int result = sut.isEven(n);
 
                 // ASSERT
-                assertEquals(result, expected);
+                assertEquals(expected, result);
             }
 
             @DisplayName("Solution 1c: Even or Odd Number. Problem: Create the methods boolean isEven(n) and boolean isOdd(n) that will check if the passed integer is even or odd, respectively.")
             @ParameterizedTest(name = "{0}: {1} (0 = even; 1 = odd)")
             @CsvSource({"0, 0", "1, 1", "-1, 1", "-100, 0", "120, 0"})
-            void testIsOdd(int n, int expected) {
+            void testIsOdd(final int n, final int expected) {
                 // ARRANGE
-                _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber sut = new _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber();
+                final _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber sut = new _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber();
 
                 // ACT
-                int result = sut.isOdd(n);
+                final int result = sut.isOdd(n);
 
                 // ASSERT
-                assertEquals(result, expected);
+                assertEquals(expected, result);
             }
         }
 
@@ -247,15 +247,15 @@ class _1_MathematicalProblemsTest {
         class Solution_2 {
             @ParameterizedTest(name = "Number as text: {0} ==> {1}")
             @CsvSource({"0, ZERO", "7, SEVEN", "42, FOUR TWO", "7271, SEVEN TWO SEVEN ONE", "24680, TWO FOUR SIX EIGHT ZERO", "13579, ONE THREE FIVE SEVEN NINE"})
-            void testNumberAsText(int number, String expectedText) {
+            void testNumberAsText(final int number, final String expectedText) {
                 // ARRANGE
-                _1_MathematicalProblems.Solutions._2_NumberAsText sut = new _1_MathematicalProblems.Solutions._2_NumberAsText();
+                final _1_MathematicalProblems.Solutions._2_NumberAsText sut = new _1_MathematicalProblems.Solutions._2_NumberAsText();
 
                 // ACT
-                String result = sut.numberAsText(number);
+                final String result = sut.numberAsText(number);
 
                 // ASSERT
-                assertEquals(result, expectedText);
+                assertEquals(expectedText, result);
             }
         }
     }
