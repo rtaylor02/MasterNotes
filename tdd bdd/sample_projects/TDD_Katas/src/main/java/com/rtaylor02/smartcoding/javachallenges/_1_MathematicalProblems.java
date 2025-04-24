@@ -139,6 +139,35 @@ public class _1_MathematicalProblems {
                 return number % 2 != 0 ? 1 : 0;
             }
         }
+
+        static class _2_NumberAsText {
+
+            public String numberAsText(int number) {
+                Map<Integer, String> numberToTextMapping = Map.of(
+                        0, "ZERO",
+                        1, "ONE",
+                        2, "TWO",
+                        3, "THREE",
+                        4, "FOUR",
+                        5, "FIVE",
+                        6, "SIX",
+                        7, "SEVEN",
+                        8, "EIGHT",
+                        9, "NINE");
+
+                StringBuilder result = new StringBuilder();
+                int remainingNumber = number;
+
+                do {
+                    int digit = remainingNumber % 10;
+                    String text = numberToTextMapping.get(digit);
+                    result.insert(0, text + " ");
+                    remainingNumber = remainingNumber / 10;
+                } while (remainingNumber > 0);
+
+                return result.toString().trim();
+            }
+        }
     }
 }
 

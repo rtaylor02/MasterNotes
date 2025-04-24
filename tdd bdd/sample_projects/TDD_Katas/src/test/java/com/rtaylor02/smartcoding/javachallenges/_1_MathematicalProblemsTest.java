@@ -145,98 +145,118 @@ class _1_MathematicalProblemsTest {
     @Nested
     @DisplayName("Solutions")
     class SolutionsTest {
-        @DisplayName("Solution 1a: Basic Arithmetic Operations")
-        @ParameterizedTest(name = "({0} * {1} / 2) % 7 = {2}")
-        @CsvSource({"6, 7, 0", "3, 4, 6", "5, 5, 5"})
-        void testCalc(int n, int m, int expected) {
-            // ARRANGE
-            _1_MathematicalProblems.Solutions._1a_BasicArithmeticOperations sut = new _1_MathematicalProblems.Solutions._1a_BasicArithmeticOperations();
+        @Nested
+        @DisplayName("Solution 1:")
+        class Solution_1 {
+            @DisplayName("Solution 1a: Basic Arithmetic Operations")
+            @ParameterizedTest(name = "({0} * {1} / 2) % 7 = {2}")
+            @CsvSource({"6, 7, 0", "3, 4, 6", "5, 5, 5"})
+            void testCalc(int n, int m, int expected) {
+                // ARRANGE
+                _1_MathematicalProblems.Solutions._1a_BasicArithmeticOperations sut = new _1_MathematicalProblems.Solutions._1a_BasicArithmeticOperations();
 
-            // ACT
-            int result = sut.calc(n, m);
+                // ACT
+                int result = sut.calc(n, m);
 
-            // ASSERT
-            assertEquals(expected, result);
+                // ASSERT
+                assertEquals(expected, result);
+            }
+
+            @DisplayName("Solution 1b: Statistics. Problem: Find the number as well as the sum of natural numbers, which are divisible by 2 or 7 up to a given maximum value (exclusive) and output it to the console. Write method void calcSumAndCountAllNumbersDivBy_2_Or_7(int). Extend it so that it returns the two values instead of performing the console output.")
+            @ParameterizedTest(name = "Numbers divisible by 2 or 7 up to {0} ==> count={1}, sum={2}")
+            @CsvSource({"3, 1, 2", "8, 4, 19", "15, 8, 63"})
+            void testCalcSumAndCountAllNumbersDivBy_2_Or_7(int n, int expectedCount, int expectedSum) {
+                // ARRANGE
+                _1_MathematicalProblems.Solutions._1b_Statistics sut = new _1_MathematicalProblems.Solutions._1b_Statistics();
+
+                // ACT
+                Map<_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode, Integer> result = sut.calcSumAndCountAllNumbersDivBy_2_Or_7(n);
+
+                // ASSERT
+                assertEquals(expectedCount, result.get(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.COUNT));
+                assertEquals(expectedSum, result.get(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.SUM));
+            }
+
+            @DisplayName("Solution 1b: Statistics. Problem: Find the number as well as the sum of natural numbers, which are divisible by 2 or 7 up to a given maximum value (exclusive) and output it to the console. Write method void calcSumAndCountAllNumbersDivBy_2_Or_7(int). Extend it so that it returns the two values instead of performing the console output.")
+            @ParameterizedTest(name = "Count and sum of numbers divisible by 2 or 7 up to {0}: {1}")
+            @MethodSource("argProvider")
+            void testCalcSumAndCountAllNumbersDivBy_2_Or_7(int n, Map<_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode, Integer> expected) {
+                // ARRANGE
+                _1_MathematicalProblems.Solutions._1b_Statistics sut = new _1_MathematicalProblems.Solutions._1b_Statistics();
+
+                // ACT
+                Map<_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode, Integer> result = sut.calcSumAndCountAllNumbersDivBy_2_Or_7(n);
+
+                // ASSERT
+                assertEquals(expected, result);
+            }
+
+            private static Stream<Arguments> argProvider() {
+                return Stream.of(
+                        Arguments.of(3, Map.of(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.COUNT, 1, _1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.SUM, 2)),
+                        Arguments.of(8, Map.of(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.COUNT, 4, _1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.SUM, 19)),
+                        Arguments.of(15, Map.of(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.COUNT, 8, _1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.SUM, 63)));
+            }
+
+            @DisplayName("Solution 1b: Statistics. Problem: Find the number as well as the sum of natural numbers, which are divisible by 2 or 7 up to a given maximum value (exclusive) and output it to the console. Write method void calcSumAndCountAllNumbersDivBy_2_Or_7(int). Extend it so that it returns the two values instead of performing the console output.")
+            @ParameterizedTest(name = "Using record, Numbers divisible by 2 or 7 up to {0} ==> count={1}, sum={2}")
+            @CsvSource({"3, 1, 2", "8, 4, 19", "15, 8, 63"})
+            void testCalcSumAndCountAllNumbersDivBy_2_Or_7_withRecord(int n, int expectedCount, int expectedSum) {
+                // ARRANGE
+                _1_MathematicalProblems.Solutions._1b_Statistics sut = new _1_MathematicalProblems.Solutions._1b_Statistics();
+
+                // ACT
+                _1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode_record result = sut.calcSumAndCountAllNumbersDivBy_2_Or_7_withRecord(n);
+
+                // ASSERT
+                assertEquals(expectedCount, result.count());
+                assertEquals(expectedSum, result.sum());
+            }
+
+            @DisplayName("Solution 1c: Even or Odd Number. Problem: Create the methods boolean isEven(n) and boolean isOdd(n) that will check if the passed integer is even or odd, respectively.")
+            @ParameterizedTest(name = "{0}: {1} (0 = even; 1 = odd)")
+            @CsvSource({"0, 1", "1, 0", "-1, 0", "-100, 1", "120, 1"})
+            void testIsEven(int n, int expected) {
+                // ARRANGE
+                _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber sut = new _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber();
+
+                // ACT
+                int result = sut.isEven(n);
+
+                // ASSERT
+                assertEquals(result, expected);
+            }
+
+            @DisplayName("Solution 1c: Even or Odd Number. Problem: Create the methods boolean isEven(n) and boolean isOdd(n) that will check if the passed integer is even or odd, respectively.")
+            @ParameterizedTest(name = "{0}: {1} (0 = even; 1 = odd)")
+            @CsvSource({"0, 0", "1, 1", "-1, 1", "-100, 0", "120, 0"})
+            void testIsOdd(int n, int expected) {
+                // ARRANGE
+                _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber sut = new _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber();
+
+                // ACT
+                int result = sut.isOdd(n);
+
+                // ASSERT
+                assertEquals(result, expected);
+            }
         }
 
-        @DisplayName("Solution 1b: Statistics. Problem: Find the number as well as the sum of natural numbers, which are divisible by 2 or 7 up to a given maximum value (exclusive) and output it to the console. Write method void calcSumAndCountAllNumbersDivBy_2_Or_7(int). Extend it so that it returns the two values instead of performing the console output.")
-        @ParameterizedTest(name = "Numbers divisible by 2 or 7 up to {0} ==> count={1}, sum={2}")
-        @CsvSource({"3, 1, 2", "8, 4, 19", "15, 8, 63"})
-        void testCalcSumAndCountAllNumbersDivBy_2_Or_7(int n, int expectedCount, int expectedSum) {
-            // ARRANGE
-            _1_MathematicalProblems.Solutions._1b_Statistics sut = new _1_MathematicalProblems.Solutions._1b_Statistics();
+        @Nested
+        @DisplayName("Solution 2:")
+        class Solution_2 {
+            @ParameterizedTest(name = "Number as text: {0} ==> {1}")
+            @CsvSource({"0, ZERO", "7, SEVEN", "42, FOUR TWO", "7271, SEVEN TWO SEVEN ONE", "24680, TWO FOUR SIX EIGHT ZERO", "13579, ONE THREE FIVE SEVEN NINE"})
+            void testNumberAsText(int number, String expectedText) {
+                // ARRANGE
+                _1_MathematicalProblems.Solutions._2_NumberAsText sut = new _1_MathematicalProblems.Solutions._2_NumberAsText();
 
-            // ACT
-            Map<_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode, Integer> result = sut.calcSumAndCountAllNumbersDivBy_2_Or_7(n);
+                // ACT
+                String result = sut.numberAsText(number);
 
-            // ASSERT
-            assertEquals(expectedCount, result.get(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.COUNT));
-            assertEquals(expectedSum, result.get(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.SUM));
+                // ASSERT
+                assertEquals(result, expectedText);
+            }
         }
-
-        @DisplayName("Solution 1b: Statistics. Problem: Find the number as well as the sum of natural numbers, which are divisible by 2 or 7 up to a given maximum value (exclusive) and output it to the console. Write method void calcSumAndCountAllNumbersDivBy_2_Or_7(int). Extend it so that it returns the two values instead of performing the console output.")
-        @ParameterizedTest(name = "Count and sum of numbers divisible by 2 or 7 up to {0}: {1}")
-        @MethodSource("argProvider")
-        void testCalcSumAndCountAllNumbersDivBy_2_Or_7(int n, Map<_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode, Integer> expected) {
-            // ARRANGE
-            _1_MathematicalProblems.Solutions._1b_Statistics sut = new _1_MathematicalProblems.Solutions._1b_Statistics();
-
-            // ACT
-            Map<_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode, Integer> result = sut.calcSumAndCountAllNumbersDivBy_2_Or_7(n);
-
-            // ASSERT
-            assertEquals(expected, result);
-        }
-
-        private static Stream<Arguments> argProvider() {
-            return Stream.of(
-                    Arguments.of(3, Map.of(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.COUNT, 1, _1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.SUM, 2)),
-                    Arguments.of(8, Map.of(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.COUNT, 4, _1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.SUM, 19)),
-                    Arguments.of(15, Map.of(_1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.COUNT, 8, _1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode.SUM, 63)));
-        }
-
-        @DisplayName("Solution 1b: Statistics. Problem: Find the number as well as the sum of natural numbers, which are divisible by 2 or 7 up to a given maximum value (exclusive) and output it to the console. Write method void calcSumAndCountAllNumbersDivBy_2_Or_7(int). Extend it so that it returns the two values instead of performing the console output.")
-        @ParameterizedTest(name = "Using record, Numbers divisible by 2 or 7 up to {0} ==> count={1}, sum={2}")
-        @CsvSource({"3, 1, 2", "8, 4, 19", "15, 8, 63"})
-        void testCalcSumAndCountAllNumbersDivBy_2_Or_7_withRecord(int n, int expectedCount, int expectedSum) {
-            // ARRANGE
-            _1_MathematicalProblems.Solutions._1b_Statistics sut = new _1_MathematicalProblems.Solutions._1b_Statistics();
-
-            // ACT
-            _1_MathematicalProblems.Solutions._1b_Statistics.ReturnCode_record result = sut.calcSumAndCountAllNumbersDivBy_2_Or_7_withRecord(n);
-
-            // ASSERT
-            assertEquals(expectedCount, result.count());
-            assertEquals(expectedSum, result.sum());
-        }
-
-        @DisplayName("Solution 1c: Even or Odd Number. Problem: Create the methods boolean isEven(n) and boolean isOdd(n) that will check if the passed integer is even or odd, respectively.")
-        @ParameterizedTest(name = "{0}: {1} (0 = even; 1 = odd)")
-        @CsvSource({"0, 1", "1, 0", "-1, 0", "-100, 1", "120, 1"})
-        void testIsEven(int n, int expected) {
-            // ARRANGE
-            _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber sut = new _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber();
-
-            // ACT
-            int result = sut.isEven(n);
-
-            // ASSERT
-            assertEquals(result, expected);
-        }
-
-        @DisplayName("Solution 1c: Even or Odd Number. Problem: Create the methods boolean isEven(n) and boolean isOdd(n) that will check if the passed integer is even or odd, respectively.")
-        @ParameterizedTest(name = "{0}: {1} (0 = even; 1 = odd)")
-        @CsvSource({"0, 0", "1, 1", "-1, 1", "-100, 0", "120, 0"})
-        void testIsOdd(int n, int expected) {
-            // ARRANGE
-            _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber sut = new _1_MathematicalProblems.Solutions._1c_EvenOrOddNumber();
-
-            // ACT
-            int result = sut.isOdd(n);
-
-            // ASSERT
-            assertEquals(result, expected);
-        }
-
     }
 }
