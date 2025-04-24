@@ -158,12 +158,12 @@ public class _1_MathematicalProblems {
                 StringBuilder result = new StringBuilder();
                 int remainingNumber = number;
 
-                do {
+                while (remainingNumber > 0) {
                     int digit = remainingNumber % 10;
                     String text = numberToTextMapping.get(digit);
                     result.insert(0, text + " ");
                     remainingNumber = remainingNumber / 10;
-                } while (remainingNumber > 0);
+                }
 
                 return result.toString().trim();
             }

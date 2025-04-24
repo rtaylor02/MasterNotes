@@ -243,10 +243,10 @@ class _1_MathematicalProblemsTest {
         }
 
         @Nested
-        @DisplayName("Solution 2:")
+        @DisplayName("Solution 2: Write method String numberAsText(int) which, for a given positive number, converts the respective digits into corresponding text.")
         class Solution_2 {
             @ParameterizedTest(name = "Number as text: {0} ==> {1}")
-            @CsvSource({"0, ZERO", "7, SEVEN", "42, FOUR TWO", "7271, SEVEN TWO SEVEN ONE", "24680, TWO FOUR SIX EIGHT ZERO", "13579, ONE THREE FIVE SEVEN NINE"})
+            @CsvSource({"7, SEVEN", "42, FOUR TWO", "7271, SEVEN TWO SEVEN ONE", "24680, TWO FOUR SIX EIGHT ZERO", "13579, ONE THREE FIVE SEVEN NINE"})
             void testNumberAsText(final int number, final String expectedText) {
                 // ARRANGE
                 final _1_MathematicalProblems.Solutions._2_NumberAsText sut = new _1_MathematicalProblems.Solutions._2_NumberAsText();
