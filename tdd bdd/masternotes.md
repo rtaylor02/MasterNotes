@@ -14,6 +14,18 @@ Legacy code can mean old codes without unit tests.
 3. **Reduce cyclomatic complexity** and **compose methods** by method extraction. Cyclomatic complexity: different path the code can go through (by ifs-else, etc). Rerun approval test to make sure no behavioural changes is introduced. Also, possibly create interface to put a level of abstraction in the code so SOLID principle is respected.
 4. Create **more tests** to cover all scenarios, copy the result as reference result.
 
+# TDD
+JUnit5 useful annotations and assertions:
+- @DisplayNameGeneration(DisplayNameGenerator.Simple.class)
+    ![img.png](img.png)
+    ![img_1.png](img_1.png)
+    ![img_2.png](img_2.png)
+- @DisplayName
+    ![img_3.png](img_3.png)
+- assertSame(expected, actual, msg), assertNotSame(e, a, m): checks if e and a are referring to the same object.
+- assertTrue(e, a, m), assertFalse(e, a, m)
+- 
+
 # BDD
 Source: [Cucumber School](https://school.cucumber.io/courses/take/bdd-with-cucumber-java/lessons/9489215-introduction-to-bdd)  
 
