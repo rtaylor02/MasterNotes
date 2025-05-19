@@ -1,6 +1,12 @@
+# Introduction
 This is a master note for all advanced Java topics such as:
 - Data structures
 - Java reflection
+
+## Data Structures
+
+
+## Java Reflection
 
 # Resources
 - [Java Data Structures & Algorithms + LEETCODE Exercises](https://ba.udemy.com/course/data-structures-and-algorithms-java/learn/?learning_path_id=9536929) by Scott Barrett
