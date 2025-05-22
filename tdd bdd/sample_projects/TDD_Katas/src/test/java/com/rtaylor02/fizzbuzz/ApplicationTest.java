@@ -14,15 +14,16 @@ class ApplicationTest {
     private Application app = new Application();
 
     @ParameterizedTest(name = "{0}: {1}")
-    @CsvSource({"1, 1", "2, 2", "3, FIZZ", "4, 4", "5, BUZZ", "6, FIZZ", "7, 7", "15, FIZZBUZZ"})
+    @CsvSource({"1, 1", "2, 2", "3, FIZZ", "4, 4", "5, BUZZ", "6, FIZZ", "7, 7", "15, FIZZBUZZ", "30, FIZZBUZZ"})
     void testCsvData(int number, String expected) {
         // ARRANGE - ACT - ASSERT
         assertEquals(expected, app.compute(number));
     }
 
     @ParameterizedTest(name = "{0}: {1}")
-    @CsvFileSource(resources = "")
-    void testMediumSizeCsvFile() {
-
+    @CsvFileSource(resources = "/medium-test-file.csv")
+    void testMediumSizeCsvFile(int number, String expected) {
+        // ARRANGE - ACT - ASSERT
+        assertEquals(expected, app.compute(number));
     }
 }
