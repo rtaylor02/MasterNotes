@@ -12,16 +12,27 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <junit-jupiter.version>5.11.3</junit-jupiter.version>
+    <junit-jupiter.version>5.12.2</junit-jupiter.version>
   </properties>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit-jupiter.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
-    <!-- junit-jupiter includes the 2 dependencies above (jupiter-engine and jupiter-api) + jupiter-params-->
+    <!-- junit-jupiter includes 3 dependencies: jupiter-engine + jupiter-api + jupiter-params-->
     <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <version>${junit-jupiter.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
